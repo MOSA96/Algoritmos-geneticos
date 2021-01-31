@@ -68,3 +68,4 @@ def _obtener_fitness(padres, funcion_fitness):
     print('generacion {}| mejor_padre {}| mejor_fitness {}'.format(i,  mejor_padre, mejor_fitness))
                
     return mejor_padre, mejor_fitness, Historial, Mejores_padres
+
