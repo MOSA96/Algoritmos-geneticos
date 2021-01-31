@@ -16,3 +16,4 @@ def AG_simple(padres, funcion_fitness, inicio, fin, max_iter=100):
 
                
     return mejor_padre, mejor_fitness
+
