@@ -16,3 +16,4 @@ def _polynomial(x):
 def _trigonometric(x):
     y =  np.sin(3*x + 45)**2 + 0.9*np.sin(9*x)**3 - np.sin(15*x + 50)*np.cos(2*x - 30)
     return y
+
