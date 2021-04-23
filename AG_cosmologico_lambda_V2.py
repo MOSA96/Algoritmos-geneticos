@@ -28,7 +28,7 @@ def chi_square(z, H_dat, cdm, sigma):
         
     return lista2   
   
-  def _obtener_fitness(z, H_dat, padres, sigma):
+def _obtener_fitness(z, H_dat, padres, sigma):
     _fitness = chi_square(z, H_dat, padres, sigma)
     Pfitness = list(zip(padres,_fitness))
     Pfitness.sort(key = lambda x: x[1], reverse=False)
@@ -36,20 +36,8 @@ def chi_square(z, H_dat, cdm, sigma):
     return round(mejor_padre,6), round(mejor_fitness, 6), Pfitness
 
 
-def mutacion(z, H_dat, padres, sigma):
-    
-    n = int(len(H_dat))
-    puntajes = chi_square(z, H_dat, padres, sigma)
-    padres = np.array(padres)
-    hijos = np.random.choice(padres, size=n, p = puntajes / sum(puntajes))
-    hijos = hijos.tolist()
-    inferior = min(hijos)
-    superior = max(hijos)
-    hijos = hijos + np.random.uniform(0, 1-superior, size = n)
-    
-    return hijos.tolist()
 
-def mutacion2(z, H_dat, padres, sigma, factor_mutacion):
+def mutacion(z, H_dat, padres, sigma, factor_mutacion):
     
     n = int(len(H_dat))
     padre, fitness, poblacion = _obtener_fitness(z, H_dat, padres, sigma)
@@ -65,11 +53,11 @@ def AG_simple(z, H_dat, padres, sigma, max_iter):
     f_mutacion = 0.2
     
     mejor_padre, mejor_fitness, poblacion = _obtener_fitness(z, H_dat, padres, sigma)
-    padre = mutacion2(z, H_dat, padres, sigma, f_mutacion)  
+    padre = mutacion(z, H_dat, padres, sigma, f_mutacion)  
     
     for i in range(1, max_iter):
         
-        padre = mutacion2(z, H_dat, padre, sigma, f_mutacion)
+        padre = mutacion(z, H_dat, padre, sigma, f_mutacion)
         padre_actual, fitness_actual, poblacion = _obtener_fitness(z, H_dat, padre, sigma)
         
         Poblacion[i] = poblacion
