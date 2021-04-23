@@ -4,16 +4,6 @@ import matplotlib.pyplot as plt
 
 #Definimos ecuaciones 
 
-
-
-#Calculamos los parámetros
-def omega(cdm):
-    return 1-cdm
-
-#Calculamos H
-def h_square2(z,list_cdm):
-    return np.sqrt((H0**2)*(i*(1+z)**3+ (1-i) ))
-
 #Calculamos valores de H para cada valor z para cada parámetros
 def h_square(z,list_cdm):
     h_dict = {}
